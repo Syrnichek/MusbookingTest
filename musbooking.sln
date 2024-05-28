@@ -17,13 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Core", "OrderS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderService.Application", "OrderService\OrderService.Application\OrderService.Application.csproj", "{BC18AEE1-0A02-402D-9770-E4B77D9D9A69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.API", "EquipmentService.API\EquipmentService.API.csproj", "{D200614C-CE46-4A5F-81D3-F1E4A0FC3DAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.API", "EquipmentService\EquipmentService.API\EquipmentService.API.csproj", "{D200614C-CE46-4A5F-81D3-F1E4A0FC3DAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.Infrastructure", "EquipmentService.Infrastructure\EquipmentService.Infrastructure.csproj", "{23CFA589-4ED9-4FB5-9A7C-8AC60EF8FCAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.Infrastructure", "EquipmentService\EquipmentService.Infrastructure\EquipmentService.Infrastructure.csproj", "{23CFA589-4ED9-4FB5-9A7C-8AC60EF8FCAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.Application", "EquipmentService.Application\EquipmentService.Application.csproj", "{637EEB7A-7D66-4192-8364-AB3ED00C0592}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.Application", "EquipmentService\EquipmentService.Application\EquipmentService.Application.csproj", "{637EEB7A-7D66-4192-8364-AB3ED00C0592}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.Core", "EquipmentService.Core\EquipmentService.Core.csproj", "{39DD8A75-6CCF-4AD9-987B-EA06A2235988}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EquipmentService.Core", "EquipmentService\EquipmentService.Core\EquipmentService.Core.csproj", "{39DD8A75-6CCF-4AD9-987B-EA06A2235988}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
