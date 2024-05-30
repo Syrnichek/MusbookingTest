@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connection = builder.Configuration.GetConnectionString("WebApiDatabase");
 
 builder.Services.AddDbContext<EquipmentContext>(options => options.UseSqlite(connection));
+builder.Services.AddGrpc();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

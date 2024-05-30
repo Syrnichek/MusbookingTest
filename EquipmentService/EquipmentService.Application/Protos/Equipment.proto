@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option csharp_namespace = "EquipmentService.Application";
+import "google/protobuf/empty.proto";
+
+package equipmentService;
+
+service equipmentService {
+  rpc AddEquipment (AddEquipmentRequest) returns (EquipmentResponse);
+  rpc GetEquipmentAll (google.protobuf.Empty) returns (EquipmentResponseList);
+  rpc GetEquipmentByName (GetEquipmentByNameRequest) returns (EquipmentResponse);
+  rpc UpdateAmount (UpdateAmountRequest) returns (UpdateAmountResponse);
+}
+
+message AddEquipmentRequest {
+  string name = 1;
+
+  int32 amount = 2;
+
+  double price = 3;
+}
+
+message EquipmentResponse {
+  int32 equipmentId = 1;
+
+  string name = 2;
+
+  int32 amount = 3;
+
+  double price = 4;
+}
+
+message EquipmentResponseList {
+  repeated EquipmentResponse equipment = 1;
+}
+
+message GetEquipmentByNameRequest {
+  string name = 1;
+}
+
+message UpdateAmountRequest {
+  string name = 1;
+  int32 amount = 2;
+}
+
+message UpdateAmountResponse {
+  int32 amount = 1;
+}

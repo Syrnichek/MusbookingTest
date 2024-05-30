@@ -9,7 +9,12 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -17,11 +22,7 @@
         <Link>.dockerignore</Link>
       </Content>
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Services\" />
-    </ItemGroup>
-
+    
     <ItemGroup>
       <ProjectReference Include="..\EquipmentService.Infrastructure\EquipmentService.Infrastructure.csproj" />
     </ItemGroup>

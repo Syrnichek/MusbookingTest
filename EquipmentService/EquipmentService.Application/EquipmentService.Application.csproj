@@ -7,15 +7,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Commands\" />
-      <Folder Include="Handlers\" />
       <Folder Include="Mappers\" />
-      <Folder Include="Queries\" />
-      <Folder Include="Responses\" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\EquipmentService.Core\EquipmentService.Core.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Protobuf Include="Protos\Equipment.proto" GrpcServices="Server" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.2.0" />
     </ItemGroup>
 
 </Project>

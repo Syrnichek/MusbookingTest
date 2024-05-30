@@ -6,7 +6,7 @@ public interface IEquipmentRepository
 {
     Task<EquipmentModel> AddEquipment(EquipmentModel equipmentModel);
 
-    Task<int> UpdateAmount(int equipmentAmount);
+    Task<bool> UpdateAmount(string name, int equipmentAmount);
 
     Task<EquipmentModel> GetEquipmentByName(string name);
 
