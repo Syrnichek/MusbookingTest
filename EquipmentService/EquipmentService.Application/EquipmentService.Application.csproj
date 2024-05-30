@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Mappers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\EquipmentService.Core\EquipmentService.Core.csproj" />
     </ItemGroup>
     
@@ -19,7 +15,9 @@
     </ItemGroup>
     
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.2.0" />
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
+        <PackageReference Include="MediatR" Version="12.2.0" />
     </ItemGroup>
 
 </Project>
