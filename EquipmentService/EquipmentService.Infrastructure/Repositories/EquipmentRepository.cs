@@ -20,7 +20,17 @@ public class EquipmentRepository : IEquipmentRepository
         await _equipmentContext.SaveChangesAsync();
         return equipmentModel;
     }
-
+    
+    public async Task<List<EquipmentModel>> GetEquipmentAll()
+    {
+        return await _equipmentContext.EquipmentModels.ToListAsync();
+    }
+    
+    public async Task<EquipmentModel> GetEquipmentByName(string name)
+    {
+        return await _equipmentContext.EquipmentModels.FirstOrDefaultAsync(e => e.Name == name) ?? throw new InvalidOperationException();
+    }
+    
     public async Task<bool> UpdateAmount(string name, int equipmentAmount)
     {
         var entity = await _equipmentContext
@@ -35,15 +45,5 @@ public class EquipmentRepository : IEquipmentRepository
         }
 
         return false;
-    }
-
-    public async Task<EquipmentModel> GetEquipmentByName(string name)
-    {
-        return await _equipmentContext.EquipmentModels.FirstOrDefaultAsync(e => e.Name == name) ?? throw new InvalidOperationException();
-    }
-
-    public async Task<List<EquipmentModel>> GetEquipmentAll()
-    {
-        return await _equipmentContext.EquipmentModels.ToListAsync();
     }
 }

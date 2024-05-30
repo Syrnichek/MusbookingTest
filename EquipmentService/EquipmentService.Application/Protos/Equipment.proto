@@ -44,5 +44,5 @@ message UpdateAmountRequest {
 }
 
 message UpdateAmountResponse {
-  int32 amount = 1;
+  bool result = 1;
 }
