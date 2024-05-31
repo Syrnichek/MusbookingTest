@@ -14,4 +14,10 @@
       <ProjectReference Include="..\OrderService.Core\OrderService.Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Handlers\" />
+      <Folder Include="Mappers\" />
+      <Folder Include="Responses\" />
+    </ItemGroup>
+
 </Project>
