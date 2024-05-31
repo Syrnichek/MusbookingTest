@@ -10,4 +10,8 @@
       <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\OrderService.Core\OrderService.Core.csproj" />
+    </ItemGroup>
+
 </Project>

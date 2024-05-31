@@ -1,23 +1,23 @@
-using EquipmentService.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using OrderService.Core.Entities;
 
-namespace EquipmentService.Infrastructure.Data;
+namespace OrderService.Infrastructure.Data;
 
-public class EquipmentContext : DbContext
+public class OrderContext : DbContext
 {
     private readonly IConfiguration _configuration;
 
-    public EquipmentContext(IConfiguration configuration)
+    public OrderContext(IConfiguration configuration)
     {
         _configuration = configuration;
     }
     
-    public DbSet<EquipmentModel> EquipmentModels { get; set; } = null!;
+    public DbSet<OrderModel> OrderModels { get; set; } = null!;
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite(_configuration.GetConnectionString("WebApiDatabase"),  
-            b => b.MigrationsAssembly("EquipmentService.API"));
+            b => b.MigrationsAssembly("OrderService.API"));
     }
 }
