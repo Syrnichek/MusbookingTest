@@ -1,6 +1,7 @@
 using EquipmentService.Application;
 using MediatR;
 using OrderService.Application.Commands;
+using OrderService.Application.Exceptions;
 using OrderService.Application.Mappers;
 using OrderService.Application.Responses;
 using OrderService.Core.Entities;
@@ -34,7 +35,12 @@ public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, OrderResp
                 Name = equipment.Name
             };
 
-            var equipmentAmount = await _equipmentServiceClient.GetEquipmentByNameAsync(getEquipmentByNameRequest); 
+            var equipmentAmount = await _equipmentServiceClient.GetEquipmentByNameAsync(getEquipmentByNameRequest);
+
+            if (equipmentAmount.Amount < equipment.Amount)
+            {
+                throw new EquipmentAmountNotEnoughException("Not enough equipment");
+            }
             
             var updateAmountRequest = new UpdateAmountRequest
             {
