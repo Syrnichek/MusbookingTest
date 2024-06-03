@@ -39,7 +39,7 @@
     
     <ItemGroup>
         <Protobuf Include="..\..\EquipmentService\EquipmentService.Application\Protos\Equipment.proto">
-            <Link>OrderService.Infrastucture\Protos\Equipment.proto</Link>
+            <Link>..\..\Protos\Equipment.proto</Link>
         </Protobuf>
     </ItemGroup>
 

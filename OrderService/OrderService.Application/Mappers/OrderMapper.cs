@@ -1,5 +1,4 @@
 using AutoMapper;
-using EquipmentService.Application.Mappers;
 
 namespace OrderService.Application.Mappers;
 
@@ -10,7 +9,7 @@ public class OrderMapper
         var config = new MapperConfiguration(cfg =>
         {
             cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsAssembly;
-            cfg.AddProfile<EquipmentMapperProfile>();
+            cfg.AddProfile<OrderMapperProfile>();
         });
         var mapper = config.CreateMapper();
         return mapper;

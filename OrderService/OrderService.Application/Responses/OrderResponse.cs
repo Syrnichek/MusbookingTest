@@ -1,4 +1,4 @@
-using EquipmentService.Core.Entities;
+using OrderService.Core.Entities;
 
 namespace OrderService.Application.Responses;
 
@@ -12,5 +12,5 @@ public class OrderResponse
 
     public double Price { get; set; }
 
-    public List<EquipmentModel> EquipmentList { get; set; }
+    public List<EquipmentInOrderModel> EquipmentList { get; set; }
 }
