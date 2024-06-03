@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using EquipmentService.Core.Entities;
 
 namespace OrderService.Core.Entities;
 
@@ -16,5 +15,5 @@ public class OrderModel
 
     public double Price { get; set; }
 
-    public List<EquipmentModel> EquipmentList { get; set; }
+    public List<EquipmentInOrderModel> EquipmentList { get; set; }
 }

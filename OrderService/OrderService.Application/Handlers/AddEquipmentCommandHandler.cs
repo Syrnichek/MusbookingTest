@@ -1,4 +1,3 @@
-using AutoMapper;
 using EquipmentService.Application;
 using MediatR;
 using OrderService.Application.Commands;
