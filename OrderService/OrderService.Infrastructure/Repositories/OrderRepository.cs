@@ -56,4 +56,9 @@ public class OrderRepository : IOrderRepository
     {
         return await _orderContext.OrderModels.ToListAsync();
     }
+
+    public async Task<OrderModel> GetOrderById(int id)
+    {
+        return await _orderContext.OrderModels.FirstOrDefaultAsync(o => o.OrderId == id) ?? throw new InvalidOperationException();
+    }
 }

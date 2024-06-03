@@ -11,4 +11,6 @@ public interface IOrderRepository
     Task<bool> DeleteOrder(int id);
 
     Task<List<OrderModel>> GetOrdersAll();
+
+    Task<OrderModel> GetOrderById(int id);
 }
