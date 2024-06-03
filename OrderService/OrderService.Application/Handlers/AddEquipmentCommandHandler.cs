@@ -1,13 +1,27 @@
+using AutoMapper;
 using EquipmentService.Application;
 using MediatR;
 using OrderService.Application.Commands;
+using OrderService.Application.Mappers;
 
 namespace OrderService.Application.Handlers;
 
 public class AddEquipmentCommandHandler : IRequestHandler<AddEquipmentCommand, EquipmentResponse>
 {
-    public Task<EquipmentResponse> Handle(AddEquipmentCommand request, CancellationToken cancellationToken)
+    private readonly EquipmentService.Application.equipmentService.equipmentServiceClient _equipmentServiceClient;
+
+    public AddEquipmentCommandHandler(equipmentService.equipmentServiceClient equipmentServiceClient)
     {
-        throw new NotImplementedException();
+        _equipmentServiceClient = equipmentServiceClient;
+    }
+
+    public async Task<EquipmentResponse> Handle(AddEquipmentCommand request, CancellationToken cancellationToken)
+    {
+        var entity = OrderMapper.Mapper.Map<AddEquipmentRequest>(request);
+        
+        var result = await _equipmentServiceClient.AddEquipmentAsync(entity);
+
+        var response = OrderMapper.Mapper.Map<EquipmentResponse>(result);
+        return response;
     }
 }
