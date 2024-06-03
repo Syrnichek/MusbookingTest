@@ -7,7 +7,7 @@ namespace OrderService.Application.Handlers;
 
 public class AddEquipmentCommandHandler : IRequestHandler<AddEquipmentCommand, EquipmentResponse>
 {
-    private readonly EquipmentService.Application.equipmentService.equipmentServiceClient _equipmentServiceClient;
+    private readonly equipmentService.equipmentServiceClient _equipmentServiceClient;
 
     public AddEquipmentCommandHandler(equipmentService.equipmentServiceClient equipmentServiceClient)
     {

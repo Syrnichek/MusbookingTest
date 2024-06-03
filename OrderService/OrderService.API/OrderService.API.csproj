@@ -42,9 +42,5 @@
             <Link>OrderService.Infrastucture\Protos\Equipment.proto</Link>
         </Protobuf>
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
 
 </Project>
