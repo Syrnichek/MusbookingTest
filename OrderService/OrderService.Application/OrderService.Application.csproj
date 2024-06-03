@@ -8,16 +8,16 @@
 
     <ItemGroup>
       <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
+      <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\EquipmentService\EquipmentService.Application\EquipmentService.Application.csproj" />
       <ProjectReference Include="..\OrderService.Core\OrderService.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Handlers\" />
       <Folder Include="Mappers\" />
-      <Folder Include="Responses\" />
     </ItemGroup>
 
 </Project>

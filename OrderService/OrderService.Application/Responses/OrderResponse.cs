@@ -1,13 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using EquipmentService.Core.Entities;
 
-namespace OrderService.Core.Entities;
+namespace OrderService.Application.Responses;
 
-public class OrderModel
+public class OrderResponse
 {
-    [Key]
-    public int OrderId { get; set; }
-
     public string Description { get; set; }
 
     public DateTime CreatedAt { get; set; }
