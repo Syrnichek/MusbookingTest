@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\EquipmentService\EquipmentService.Application\EquipmentService.Application.csproj" />
       <ProjectReference Include="..\OrderService.Core\OrderService.Core.csproj" />
     </ItemGroup>
 
@@ -26,10 +25,14 @@
         </PackageReference>
         <PackageReference Include="MediatR" Version="12.2.0" />
     </ItemGroup>
+
+    <ItemGroup>
+        <Protobuf Include="..\..\EquipmentService\EquipmentService.Application\Protos\Equipment.proto" GrpcServices="Client">
+            <Link>OrderService.Application\Protos\Equipment.proto</Link>
+        </Protobuf>
+    </ItemGroup>
     
     <ItemGroup>
-        <Protobuf Include="..\..\EquipmentService\EquipmentService.Application\Protos\Equipment.proto">
-            <Link>OrderService.Infrastucture\Protos\Equipment.proto</Link>
-        </Protobuf>
+      <Folder Include="Protos\" />
     </ItemGroup>
 </Project>

@@ -17,6 +17,10 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\OrderService.Core\OrderService.Core.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
         <PackageReference Include="AutoMapper" Version="13.0.1" />
         <PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
         <PackageReference Include="Grpc.Net.Client" Version="2.63.0" />
@@ -32,15 +36,9 @@
         <Link>.dockerignore</Link>
       </Content>
     </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\OrderService.Infrastructure\OrderService.Infrastructure.csproj" />
-    </ItemGroup>
     
     <ItemGroup>
-        <Protobuf Include="..\..\EquipmentService\EquipmentService.Application\Protos\Equipment.proto">
-            <Link>..\..\Protos\Equipment.proto</Link>
-        </Protobuf>
+        <ProjectReference Include="..\OrderService.Infrastructure\OrderService.Infrastructure.csproj" />
+        <ProjectReference Include="..\OrderService.Application\OrderService.Application.csproj" />
     </ItemGroup>
-
 </Project>

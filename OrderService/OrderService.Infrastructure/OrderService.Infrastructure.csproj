@@ -9,10 +9,6 @@
     <ItemGroup>
       <ProjectReference Include="..\OrderService.Application\OrderService.Application.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Protos\" />
-    </ItemGroup>
     
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="13.0.1" />
