@@ -17,7 +17,7 @@ namespace OrderService.API.Migrations
                 {
                     OrderId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: true),
                     Price = table.Column<double>(type: "REAL", nullable: false)
@@ -28,35 +28,28 @@ namespace OrderService.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EquipmentModel",
+                name: "EquipmentInOrderModel",
                 columns: table => new
                 {
-                    EquipmentId = table.Column<int>(type: "INTEGER", nullable: false)
+                    EquipmentInOrder = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Amount = table.Column<int>(type: "INTEGER", nullable: false),
-                    Price = table.Column<double>(type: "REAL", nullable: false),
                     OrderModelOrderId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EquipmentModel", x => x.EquipmentId);
+                    table.PrimaryKey("PK_EquipmentInOrderModel", x => x.EquipmentInOrder);
                     table.ForeignKey(
-                        name: "FK_EquipmentModel_OrderModels_OrderModelOrderId",
+                        name: "FK_EquipmentInOrderModel_OrderModels_OrderModelOrderId",
                         column: x => x.OrderModelOrderId,
                         principalTable: "OrderModels",
                         principalColumn: "OrderId");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_EquipmentModel_Name",
-                table: "EquipmentModel",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EquipmentModel_OrderModelOrderId",
-                table: "EquipmentModel",
+                name: "IX_EquipmentInOrderModel_OrderModelOrderId",
+                table: "EquipmentInOrderModel",
                 column: "OrderModelOrderId");
         }
 
@@ -64,7 +57,7 @@ namespace OrderService.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "EquipmentModel");
+                name: "EquipmentInOrderModel");
 
             migrationBuilder.DropTable(
                 name: "OrderModels");

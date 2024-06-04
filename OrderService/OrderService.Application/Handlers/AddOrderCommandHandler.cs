@@ -25,19 +25,16 @@ public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, OrderResp
     {
         var orderEntity = OrderMapper.Mapper.Map<OrderModel>(request);
         
-        var command = _orderRepository.AddOrder(orderEntity);
-        
-        var equipmentList = request.orderModel.EquipmentList;
-        foreach (var equipment in equipmentList)
+        foreach (var equipment in request.EquipmentList)
         {
             var getEquipmentByNameRequest = new GetEquipmentByNameRequest
             {
                 Name = equipment.Name
             };
 
-            var equipmentAmount = await _equipmentServiceClient.GetEquipmentByNameAsync(getEquipmentByNameRequest);
+            var equipmentFromDb = await _equipmentServiceClient.GetEquipmentByNameAsync(getEquipmentByNameRequest);
 
-            if (equipmentAmount.Amount < equipment.Amount)
+            if (equipmentFromDb.Amount < equipment.Amount)
             {
                 throw new EquipmentAmountNotEnoughException("Not enough equipment");
             }
@@ -45,11 +42,15 @@ public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, OrderResp
             var updateAmountRequest = new UpdateAmountRequest
             {
                 Name = equipment.Name,
-                Amount = equipmentAmount.Amount - equipment.Amount
+                Amount = equipmentFromDb.Amount - equipment.Amount
             };
-            _equipmentServiceClient.UpdateAmountAsync(updateAmountRequest);
-        }
+            await _equipmentServiceClient.UpdateAmountAsync(updateAmountRequest);
 
+            orderEntity.Price += equipmentFromDb.Price;
+        }
+        
+        var command = await _orderRepository.AddOrder(orderEntity);
+        
         var response = OrderMapper.Mapper.Map<OrderResponse>(command);
 
         return response;

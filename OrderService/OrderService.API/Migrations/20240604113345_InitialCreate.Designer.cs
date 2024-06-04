@@ -11,7 +11,7 @@ using OrderService.Infrastructure.Data;
 namespace OrderService.API.Migrations
 {
     [DbContext(typeof(OrderContext))]
-    [Migration("20240603084516_InitialCreate")]
+    [Migration("20240604113345_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,9 +20,9 @@ namespace OrderService.API.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
 
-            modelBuilder.Entity("OrderService.Core.Entities.EquipmentModel", b =>
+            modelBuilder.Entity("OrderService.Core.Entities.EquipmentInOrderModel", b =>
                 {
-                    b.Property<int>("EquipmentId")
+                    b.Property<int>("EquipmentInOrder")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -36,17 +36,11 @@ namespace OrderService.API.Migrations
                     b.Property<int?>("OrderModelOrderId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("REAL");
-
-                    b.HasKey("EquipmentId");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
+                    b.HasKey("EquipmentInOrder");
 
                     b.HasIndex("OrderModelOrderId");
 
-                    b.ToTable("EquipmentModel");
+                    b.ToTable("EquipmentInOrderModel");
                 });
 
             modelBuilder.Entity("OrderService.Core.Entities.OrderModel", b =>
@@ -59,7 +53,7 @@ namespace OrderService.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .IsRequired()
+                        .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
@@ -73,7 +67,7 @@ namespace OrderService.API.Migrations
                     b.ToTable("OrderModels");
                 });
 
-            modelBuilder.Entity("OrderService.Core.Entities.EquipmentModel", b =>
+            modelBuilder.Entity("OrderService.Core.Entities.EquipmentInOrderModel", b =>
                 {
                     b.HasOne("OrderService.Core.Entities.OrderModel", null)
                         .WithMany("EquipmentList")

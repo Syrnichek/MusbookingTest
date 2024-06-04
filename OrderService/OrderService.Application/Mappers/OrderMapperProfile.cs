@@ -10,9 +10,10 @@ public class OrderMapperProfile : Profile
 {
     public OrderMapperProfile()
     {
-        CreateMap<AddEquipmentRequest, AddEquipmentRequest>().ReverseMap();
+        CreateMap<AddEquipmentCommand, AddEquipmentRequest>().ReverseMap();
         CreateMap<EquipmentResponse, AddEquipmentRequest>().ReverseMap();
         CreateMap<OrderModel, AddOrderCommand>().ReverseMap();
         CreateMap<OrderModel, OrderResponse>().ReverseMap();
+        CreateMap<OrderModel, UpdateOrderCommand>().ReverseMap();
     }
 }

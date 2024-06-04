@@ -19,5 +19,6 @@ public class OrderContext : DbContext
     {
         optionsBuilder.UseSqlite(_configuration.GetConnectionString("WebApiDatabase"),  
             b => b.MigrationsAssembly("OrderService.API"));
+        optionsBuilder.UseLazyLoadingProxies();
     }
 }

@@ -31,8 +31,4 @@
             <Link>OrderService.Application\Protos\Equipment.proto</Link>
         </Protobuf>
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Protos\" />
-    </ItemGroup>
 </Project>

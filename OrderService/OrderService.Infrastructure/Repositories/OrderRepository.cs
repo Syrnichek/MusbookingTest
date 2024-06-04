@@ -30,6 +30,8 @@ public class OrderRepository : IOrderRepository
         if (entity != null)
         {
             entity.EquipmentList = orderModel.EquipmentList;
+            entity.Description = orderModel.Description;
+            entity.UpdatedAt = DateTime.UtcNow;
             _orderContext.OrderModels.Update(entity);
             return _orderContext.SaveChangesAsync().IsCompleted;
         }
@@ -51,14 +53,25 @@ public class OrderRepository : IOrderRepository
 
         return false;
     }
-
-    public async Task<List<OrderModel>> GetOrdersAll()
+    
+    public async Task<List<OrderModel>> GetOrdersByPage(int pageNumber)
     {
-        return await _orderContext.OrderModels.ToListAsync();
+        int pageSize = 10;
+        IQueryable<OrderModel> queryable = _orderContext.OrderModels;
+        
+        var pagedOrders = queryable
+            .OrderByDescending(o => o.CreatedAt)
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
+            .ToList();
+
+        return pagedOrders;
     }
 
     public async Task<OrderModel> GetOrderById(int id)
     {
-        return await _orderContext.OrderModels.FirstOrDefaultAsync(o => o.OrderId == id) ?? throw new InvalidOperationException();
+        return await _orderContext.OrderModels
+            .Include(o => o.EquipmentList)
+            .FirstOrDefaultAsync(o => o.OrderId == id) ?? throw new InvalidOperationException();
     }
 }

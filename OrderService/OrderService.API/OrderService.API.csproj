@@ -41,4 +41,8 @@
         <ProjectReference Include="..\OrderService.Infrastructure\OrderService.Infrastructure.csproj" />
         <ProjectReference Include="..\OrderService.Application\OrderService.Application.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+      <Folder Include="Migrations\" />
+    </ItemGroup>
 </Project>

@@ -10,7 +10,7 @@ public interface IOrderRepository
 
     Task<bool> DeleteOrder(int id);
 
-    Task<List<OrderModel>> GetOrdersAll();
+    Task<List<OrderModel>> GetOrdersByPage(int pageNumber);
 
     Task<OrderModel> GetOrderById(int id);
 }

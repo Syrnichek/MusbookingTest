@@ -23,8 +23,6 @@ public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand, boo
     {
         var orderEntity = await _orderRepository.GetOrderById(request.Id);
         
-        var command = await _orderRepository.DeleteOrder(request.Id);
-        
         var equipmentList = orderEntity.EquipmentList;
         foreach (var equipment in equipmentList)
         {
@@ -40,9 +38,11 @@ public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand, boo
                 Name = equipment.Name,
                 Amount = equipmentAmount.Amount + equipment.Amount
             };
-            _equipmentServiceClient.UpdateAmountAsync(updateAmountRequest);
+            await _equipmentServiceClient.UpdateAmountAsync(updateAmountRequest);
         }
-
+        
+        var command = await _orderRepository.DeleteOrder(request.Id);
+        
         return command;
     }
 }
