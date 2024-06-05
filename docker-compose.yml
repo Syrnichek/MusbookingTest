@@ -1,6 +1,9 @@
-﻿services:
-  musbooking:
-    image: musbooking
+﻿version: '3.7'
+services:
+  order:
     build:
       context: .
-      dockerfile: musbooking/Dockerfile
+      dockerfile: OrderService/OrderService.API/Dockerfile
+    container_name: order_api
+    ports:
+      - 5221:5221

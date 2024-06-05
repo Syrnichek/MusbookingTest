@@ -1,16 +1,19 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 5221
+EXPOSE 5221
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["OrderService.API/OrderService.API.csproj", "OrderService.API/"]
-RUN dotnet restore "OrderService.API/OrderService.API.csproj"
+COPY ["OrderService/OrderService.API/OrderService.API.csproj", "OrderService/OrderService.API/"]
+COPY ["OrderService/OrderService.Application/OrderService.Application.csproj", "OrderService/OrderService.Application/"]
+COPY ["OrderService/OrderService.Core/OrderService.Core.csproj", "OrderService/OrderService.Core/"]
+COPY ["OrderService/OrderService.Infrastructure/OrderService.Infrastructure.csproj", "OrderService/OrderService.Infrastructure/"]
+RUN dotnet restore "OrderService/OrderService.API/OrderService.API.csproj"
 COPY . .
-WORKDIR "/src/OrderService.API"
+WORKDIR "/src/OrderService/OrderService.API"
 RUN dotnet build "OrderService.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
