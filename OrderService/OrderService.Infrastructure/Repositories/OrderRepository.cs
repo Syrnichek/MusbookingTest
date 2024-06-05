@@ -31,6 +31,7 @@ public class OrderRepository : IOrderRepository
         {
             entity.EquipmentList = orderModel.EquipmentList;
             entity.Description = orderModel.Description;
+            entity.Price = orderModel.Price;
             entity.UpdatedAt = DateTime.UtcNow;
             _orderContext.OrderModels.Update(entity);
             return _orderContext.SaveChangesAsync().IsCompleted;
